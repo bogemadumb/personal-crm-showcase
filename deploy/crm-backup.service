@@ -1,0 +1,8 @@
+[Unit]
+Description=Personal CRM — encrypted database backup
+After=docker.service
+
+[Service]
+Type=oneshot
+Environment=APP_DIR=/opt/personal-crm
+ExecStart=/opt/personal-crm/deploy/backup.sh

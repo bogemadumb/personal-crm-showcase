@@ -1,0 +1,10 @@
+[Unit]
+Description=Personal CRM — daily backup
+
+[Timer]
+OnCalendar=*-*-* 04:10
+Persistent=true
+RandomizedDelaySec=10m
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,117 @@
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/jetbrains-mono";
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Токены дизайн-системы: тёплый светлый фон, один акцент, тёмная тема атрибутом data-theme */
+:root {
+  --bg: #F5F4F0;
+  --bg2: #EEEDE8;
+  --card: #fff;
+  --ink: rgba(20, 18, 14, .92);
+  --ink2: #5E5B55;
+  --ink3: #9B988F;
+  --line: rgba(20, 18, 14, .08);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, .03), 0 6px 20px rgba(20, 18, 12, .05);
+  --accent: #8A2F42;
+  --accent-soft: #F7E9EC;
+  --chip: #F0EEE8;
+  --bar: #ECEAE4;
+  --ok: #1F7A4F;
+  --ok-soft: #E4F5EC;
+  --warn: #A66A00;
+  --warn-soft: #FBF0D9;
+  --alarm: #D4351C;
+  --alarm-soft: #FCEBE7;
+  --btn: rgba(20, 18, 14, .92);
+  --btn-fg: #fff;
+  --row-hover: rgba(20, 18, 14, .035);
+  --ease: cubic-bezier(.2, .8, .2, 1);
+}
+
+:root[data-theme="dark"] {
+  --bg: #101114;
+  --bg2: #15161A;
+  --card: #17191E;
+  --ink: rgba(240, 238, 232, .94);
+  --ink2: #A6A69E;
+  --ink3: #6E6F6A;
+  --line: rgba(255, 255, 255, .07);
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, .04) inset, 0 10px 30px rgba(0, 0, 0, .35);
+  --accent: #E0596F;
+  --accent-soft: rgba(224, 89, 111, .15);
+  --chip: rgba(255, 255, 255, .06);
+  --bar: rgba(255, 255, 255, .08);
+  --ok: #6FD9A3;
+  --ok-soft: rgba(76, 195, 138, .15);
+  --warn: #E8B04A;
+  --warn-soft: rgba(232, 176, 74, .15);
+  --alarm: #FF6A4D;
+  --alarm-soft: rgba(255, 106, 77, .15);
+  --btn: #E8E6E0;
+  --btn-fg: #111;
+  --row-hover: rgba(255, 255, 255, .04);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg2: var(--bg2);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-ink2: var(--ink2);
+  --color-ink3: var(--ink3);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-chip: var(--chip);
+  --color-bar: var(--bar);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-alarm: var(--alarm);
+  --color-alarm-soft: var(--alarm-soft);
+  --color-btn: var(--btn);
+  --color-btn-fg: var(--btn-fg);
+  --color-row-hover: var(--row-hover);
+  --font-sans: "Inter Variable", -apple-system, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+  --ease-soft: var(--ease);
+  --shadow-card: var(--shadow-card);
+  --animate-up: up .45s var(--ease) both;
+  --animate-pulse-dot: pulse-dot 1.8s ease-out infinite;
+
+  @keyframes up {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes pulse-dot {
+    0% { transform: scale(.6); opacity: .5; }
+    100% { transform: scale(1.8); opacity: 0; }
+  }
+}
+
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "cv11", "ss01";
+}
+
+.prose-note h1 { font-size: 20px; font-weight: 600; margin: 0 0 12px; }
+.prose-note h2 { font-size: 16px; font-weight: 600; margin: 18px 0 8px; }
+.prose-note p, .prose-note ul, .prose-note ol { margin: 0 0 10px; line-height: 1.6; }
+.prose-note ul { list-style: disc; padding-left: 20px; }
+.prose-note ol { list-style: decimal; padding-left: 20px; }
+.prose-note code { font-family: var(--font-mono); font-size: 12px; background: var(--chip); padding: 1px 5px; border-radius: 5px; }
+.prose-note pre { background: var(--bg2); padding: 12px 14px; border-radius: 10px; overflow-x: auto; margin: 0 0 12px; }
+.prose-note pre code { background: none; padding: 0; }
+.prose-note strong { font-weight: 600; }
+.prose-note mark, .snippet b { background: var(--accent-soft); color: var(--accent); border-radius: 3px; font-weight: 500; }
+
+[cmdk-item][data-selected="true"] { background: var(--row-hover); }
